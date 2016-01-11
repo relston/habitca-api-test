@@ -1,0 +1,51 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+
+	h2 Rewards
+	each reward in user.rewards
+		p= reward.text
+	h2 Habbits
+	each habbit in user.habits
+		li
+			h3=habbit.text 
+			p="Type: " + habbit.type
+			p
+				strong Date Created: 
+				span=habbit.dateCreated
+			if habbit.dateCompleted
+				p="Date Completed" + habbit.dateCompleted
+			else
+				p Not Complete
+			p="Attribute: " + habbit.attribute
+			p="Priority " + habbit.priority
+			p="Value " + habbit.value
+			if habbit.checklist
+				p
+					strong checklist
+					span=habbit.checklist
+				p="collapseChecklist:" + habbit.collapseChecklist	
+	h2 Todos
+	ul
+	each todo in user.todos
+		li
+			h3=todo.text 
+			p="Type: " + todo.type
+			p
+				strong Date Created: 
+				span=todo.dateCreated
+			if todo.dateCompleted
+				p="Date Completed" + todo.dateCompleted
+			else
+				p Not Complete
+			p="Attribute: " + todo.attribute
+			p="Priority " + todo.priority
+			p="Value " + todo.value
+			if todo.checklist
+				p
+					strong checklist
+					span=todo.checklist
+				p="collapseChecklist:" + todo.collapseChecklist
+	script(src="//d3js.org/d3.v3.min.js")
