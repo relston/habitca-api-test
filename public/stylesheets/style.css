@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+#d3Container div {
+	margin: 5px 0;
+	font: 10px sans-serif;
+	background-color: steelblue;
+	text-align: right;
+	padding: 3px;
+	color: white;
+}

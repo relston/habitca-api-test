@@ -1,8 +1,9 @@
 extends layout
-
+		
 block content
 	h1= title
 	p Welcome to #{title}
+	#d3Container
 
 	h2 Rewards
 	each reward in user.rewards
@@ -48,4 +49,7 @@ block content
 					strong checklist
 					span=todo.checklist
 				p="collapseChecklist:" + todo.collapseChecklist
+	script(type='text/javascript').
+		var data = !{JSON.stringify(user)};
 	script(src="//d3js.org/d3.v3.min.js")
+	script(src="javascripts/index.js")
