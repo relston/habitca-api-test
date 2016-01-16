@@ -6,7 +6,9 @@ var habbitData = new Habbit();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('index', { title: 'Habits'} );		
+	habbitData.getCacheUser(function(user){
+		res.json(user);		
+	})
 });
 
 module.exports = router;

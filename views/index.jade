@@ -3,28 +3,10 @@ extends layout
 block content
 	h1= title
 	p Welcome to #{title}
-	#d3Container
+	svg.chart
 
+	button#doit(type="button")
+		span Do something!
 	
-	h2 Todos
-	ul
-	each todo in user.todos
-		if !todo.dateCompleted
-			li
-				h3=todo.text 
-				p="Type: " + todo.type
-				p
-					strong Date Created: 
-					span=todo.dateCreated
-				p="Attribute: " + todo.attribute
-				p="Priority " + todo.priority
-				p="Value " + todo.value
-				if todo.checklist
-					p
-						strong checklist
-						span=todo.checklist
-					p="collapseChecklist:" + todo.collapseChecklist
-	script(type='text/javascript').
-		var data = !{JSON.stringify(user)};
 	script(src="//d3js.org/d3.v3.min.js")
 	script(src="javascripts/index.js")
