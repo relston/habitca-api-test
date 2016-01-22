@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "watch": "supervisor ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "mocha tests",
+    "build": "webpack",
+    "build:prod": "webpack -p"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -17,8 +19,14 @@
     "superagent": "^1.6.1"
   },
   "devDependencies": {
+    "css-loader": "^0.23.1",
+    "d3": "^3.5.13",
     "expect": "^1.13.4",
     "expect.js": "^0.3.1",
-    "supervisor": "^0.9.1"
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.8.1",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.11"
   }
 }
