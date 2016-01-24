@@ -1,43 +1,34 @@
 require('./style.scss');
 var React = require('react')
 var ReactDOM = require('react-dom')
+var PubSub = require("event-pubsub");
 
-
-var TaskManager = React.createClass({
-	getInitialState: function() {
-		return { data:{}, liked: true};
-	},
-	handleClick: function(event) {
-		this.setState({liked: !this.state.liked});
-	},
-	render: function() {
-		var text = this.state.liked ? 'liked' : 'haven\'t liked';
-
-		return (
-				<ul>
-					{this.props.data.habits.map(function(habit) {
-						return <Task key={habit.id} name={habit.text} />
-					})}
-				</ul>
-		)
-	}
-})
+//vars
+var emiter;
 
 var Task = React.createClass({
+	handleClick: function(event) {
+		emiter.trigger('didHabit', this.props.id);
+	},
 	render: function(){
-		return <li>
+		return <li onClick={this.handleClick}> 
 			{this.props.name}
 		</li>
 	}
-})
+});
 
-
-var init = function (data){
+module.exports = function (data){
 	ReactDOM.render(
-		<TaskManager name="Ryan" data={data} />, document.getElementById('taskManager')
+		<ul>
+			{data.habits.map(function(habit) {
+				return <Task key={habit.id} id={habit.id} name={habit.text}  />
+			})}
+		</ul>, 
+		document.getElementById('taskManager')
 	)
-}
 
-module.exports = init
+	emiter = new PubSub();
+	return emiter;
+}
 
 

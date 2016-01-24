@@ -1,14 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var Habbit = require('../model/habbitRepo');
-var habbitData = new Habbit();
+var Habit = require('../model/habbitRepo');
+var habitData = new Habit();
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	habbitData.getCacheUser(function(user){
+	habitData.getCacheUser(function(user){
 		res.json(user);		
 	})
+});
+router.put('/:taskId', function(req, res, next) {
+	var taskId = req.params.taskId;
+	habitData.updateUserTask(taskId, function(task){
+		res.json(task);		
+	});
 });
 
 module.exports = router;
