@@ -1,6 +1,6 @@
 require('./style.scss');
 var d3 = require('d3');
-var apiUrl = "api";
+
 
 function renderChart(data) {
 	var widthPcnt = 100;
@@ -71,9 +71,13 @@ function renderVertChart(data) {
 			//.attr("dy", "1em")
 			.text(function(d) { return d.history.length + "  "  + d.text  });
 }
-d3.json(apiUrl, renderVertChart);
 
-var button = document.getElementById('doit');
-button.addEventListener('click', function(e){
-	//data.habits[0].text = "This was just changed";
-});
+
+module.exports = function (data) {
+	if (data) {
+		renderVertChart(data);	
+	} else {
+		console.error("CHART: No data");
+	}
+	
+}

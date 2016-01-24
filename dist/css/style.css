@@ -1,19 +1,24 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF;
-}
-li {
-	list-style: none;
-	border: thin solid;
-}
+  color: #00B7FF; }
 
+ul {
+  padding: 0;
+  margin: 0; }
+
+li {
+  list-style: none; }
 .chart rect {
-	fill: steelblue;
-}
+  fill: steelblue; }
+
 .chart text {
-	font: 10px sans-serif;
-}
+  font: 10px sans-serif; }
+#taskManager ul li {
+  list-style: none;
+  border: thin solid;
+  padding: 10px; }
+
+/*# sourceMappingURL=style.css.map*/
