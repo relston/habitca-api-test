@@ -19,6 +19,12 @@ li {
 #taskManager ul li {
   list-style: none;
   border: thin solid;
-  padding: 10px; }
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 20px; }
+  #taskManager ul li:hover {
+    background-color: #efefef; }
+  #taskManager ul li.selected {
+    background-color: #dfdfdf; }
 
 /*# sourceMappingURL=style.css.map*/

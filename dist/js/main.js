@@ -11152,7 +11152,7 @@
 	__webpack_require__(13);
 	var React = __webpack_require__(15);
 	var ReactDOM = __webpack_require__(172);
-	var PubSub = __webpack_require__(174);
+	var PubSub = __webpack_require__(173);
 
 	//vars
 	var emiter;
@@ -11160,24 +11160,36 @@
 	var Task = React.createClass({
 		displayName: 'Task',
 
+		didToday: function (history) {
+			var latest = Math.max.apply(Math, history.map(function (time) {
+				return time.date;
+			}));
+			var latestDate = new Date(latest);
+			var today = new Date(new Date().setHours(0));
+			console.log(this.props.name + " is " + today < latestDate);
+			return today < latestDate;
+		},
 		handleClick: function (event) {
 			emiter.trigger('didHabit', this.props.id);
 		},
 		render: function () {
+			var selected = this.didToday(this.props.history) ? "selected" : "";
+
 			return React.createElement(
 				'li',
-				{ onClick: this.handleClick },
+				{ className: selected, onClick: this.handleClick },
 				this.props.name
 			);
 		}
 	});
 
 	module.exports = function (data) {
+
 		ReactDOM.render(React.createElement(
 			'ul',
 			null,
 			data.habits.map(function (habit) {
-				return React.createElement(Task, { key: habit.id, id: habit.id, name: habit.text });
+				return React.createElement(Task, { key: habit.id, id: habit.id, name: habit.text, history: habit.history });
 			})
 		), document.getElementById('taskManager'));
 
@@ -30788,8 +30800,7 @@
 
 
 /***/ },
-/* 173 */,
-/* 174 */
+/* 173 */
 /***/ function(module, exports) {
 
 	function sub(type,handler){

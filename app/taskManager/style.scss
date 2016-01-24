@@ -4,6 +4,14 @@
 			list-style: none;
 			border: thin solid;
 			padding: 10px;
+			cursor: pointer;
+			margin-bottom: 20px;
+			&:hover {
+				background-color: #efefef;
+			}
+			&.selected {
+				background-color: #dfdfdf;	
+			}
 		}	
 	}
 }
